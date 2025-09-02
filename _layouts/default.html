@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicons/favicon-32x32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicons/favicon-16x16.png' | relative_url }}">
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    {% seo title=false%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    {% include head-custom.html %}
+  </head>
+
+  <body class="font-Nunito">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <div class="terminal-prompt">
+            <span class="prompt">$</span>
+            <a href="{{ '/' | relative_url }}" class="terminal-path">cd ~/Uchechukwu</a>
+          </div>
+          {% if page.header_title %}
+            <h1 id="project_title">{{ page.header_title }}</h1>
+          {% elsif page.title %}
+            <h1 id="project_title">{{ page.title }}</h1>
+          {% else %}
+            <h1 id="project_title">{{ site.title }}</h1>
+          {% endif %}
+
+          {% if page.header_description %}
+            <h2 id="project_tagline">{{ page.header_description }}</h2>
+          {% elsif site.description and page.show_site_description == true %}
+            <h2 id="project_tagline">{{ site.description }}</h2>
+          {% endif %}
+
+          {% if page.show_author != false %}
+          <section id="project_author">
+              {% if page.author %}
+                <span>{{ page.author }}</span>
+              {% else %}
+                <span>{{ site.author[0] }}</span>
+              {% endif %}
+              
+              {% if page.show_date != false and page.date %}
+                •
+                {%- assign date_format = site.date_format | default: "%b %-d, %Y" -%}
+                <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                {{ page.date | date: date_format }}
+                </time>
+              {% endif %}
+          </section>
+          {% endif %}
+
+          {% if page.header_buttons %}
+            <section id="header_buttons">
+              {{ page.header_buttons }}
+            </section>
+          {% endif %}
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        {{ content }}
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        {% if site.github.is_project_page %}
+          <p class="copyright">{{ site.title }} maintained by <a href="{{ site.github.owner_url }}">{{ site.author[0] }}</a></p>
+        {% endif %}
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

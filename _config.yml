@@ -1,0 +1,58 @@
+# Site settings
+title: Uchechukwu's Tech Blog
+email: orjiuchechukwu52@yahoo.com
+description: >- # this means to ignore newlines until "baseurl:"
+  A personal blog about software development, open source contributions, 
+  and my journey through various tech projects. Here I share insights, 
+  tutorials, and experiences from my development journey.
+author:
+  - Uchechukwu Orji
+
+title: ~/Uchechukwu
+
+
+# Social media and contact
+github_username: elfkuzco
+# Add other social media handles as needed
+# twitter_username: your_twitter
+# linkedin_username: your_linkedin
+
+# URL settings
+url: "elfkuzco.github.io" # your domain
+baseurl: "" # the subpath of your site, e.g. /blog
+
+# Build settings
+theme: jekyll-theme-slate
+remote_theme: pages-themes/slate@v0.2.0
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Date format
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize
+date_format: "%b %-d, %Y"
+
+# Post settings
+show_excerpts: true # set to true to show excerpts on the homepage
+excerpt_separator: <!--more-->
+
+# Exclude from processing
+exclude:
+  - README.md
+  # - .sass-cache/
+  # - .jekyll-cache/
+  # - gemfiles/
+  # - Gemfile
+  # - Gemfile.lock
+  # - node_modules/
+  # - vendor/bundle/
+  # - vendor/cache/
+  # - vendor/gems/
+  # - vendor/ruby/
+
+
+# Analytics (uncomment and add your tracking ID to enable)
+# google_analytics: UA-XXXXXXXXX-X
