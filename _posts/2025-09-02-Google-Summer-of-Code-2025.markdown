@@ -110,7 +110,7 @@ here. There's still plenty of work ahead with issues of different priorities ran
 <a href="https://github.com/openzim/zimfarm/issues?q=is%3Aissue%20state%3Aopen%20label%3Aprio3" target="_blank">prio3</a> to a broader
 backlog waiting to be tackled.
 
-I’m glad to share that I’ll continue working with Kiwix as a contractor until at least the end of 2025, which is both a testament to their trust
+I’m very glad to share that I’ll continue working with Kiwix as a contractor until at least the end of 2025, which is both a testament to their trust
 in the work I’ve done and to how much I’ve developed since my first pull request to their codebase two years ago.
 
 ### Things I Learned
@@ -120,7 +120,7 @@ backwards-compatibility and the trade-offs associated with it.
 
 Navigating the challenges mentioned earlier meant I had to introspect heavily in order to be able
 to come up with an elegant solution while still maintaing strict type-checking standards. Also, I
-learnt newer things about SQL, most importantly the <a href="https://www.postgresql.org/docs/9.5/functions-json.html" target="_blank">JSON functions</a> and how to wrangle data to in the database.
+learnt newer things about SQL, most importantly the <a href="https://www.postgresql.org/docs/9.5/functions-json.html" target="_blank">JSON functions</a> and how to wrangle data in the database.
 
 If last year's participation in the Google Summer of Code changed the way I wrote code, this year's edition deepened my engineering discipline and how I think about building systems.
 
