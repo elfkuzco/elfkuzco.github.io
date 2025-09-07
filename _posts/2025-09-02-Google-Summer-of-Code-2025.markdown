@@ -7,9 +7,9 @@ permalink: /gsoc-2025/
 header_buttons: '<a href="https://github.com/openzim/zimfarm" class="button" target="_blank">View Project on GitHub</a>'
 ---
 
-In the summer of 2025, I participated [again](/gsoc-2024/) in <a href="https://summerofcode.withgoogle.com/" target="_blank">Google Summer of Code</a> with
-<a target="_blank" href="https://kiwix.org/">Kiwix</a> reengineering the
-<a href="https://github.com/openzim/zimfarm" target="_blank">Zimfarm project</a>. The ZIM farm (zimfarm)
+I participated [again](/gsoc-2024/) in <a href="https://summerofcode.withgoogle.com/" target="_blank">Google Summer of Code</a> with
+<a target="_blank" href="https://kiwix.org/">Kiwix</a>, this time, reengineering the
+<a href="https://github.com/openzim/zimfarm" target="_blank">Zimfarm project</a>. Zimfarm
 is a semi-decentralized software solution to build <a href="https://wiki.openzim.org/wiki/ZIM_file_format" target="_blank">ZIM files</a> efficiently. This means scraping web contents,
 packaging them into a ZIM file and uploading the results to an online ZIM files repository.
 
@@ -34,12 +34,13 @@ At a high level, the project comprises:
 ### Work Done
 
 As of September 1st, 2025, the reengineering of the ZIMFarm project spanned
-<a href="https://github.com/openzim/zimfarm/pulls?page=4&q=is%3Apr+author%3Aelfkuzco+is%3Aclosed+merged%3A%3E%3D2025-05-22" target="_blank">over 110 pull requests</a>,
+<a href="https://github.com/openzim/zimfarm/pulls?page=4&q=is%3Apr+author%3Aelfkuzco+is%3Aclosed+merged%3A%3E%3D2025-05-22" target="_blank">over 100 pull requests</a>,
 with Python and TypeScript serving as the primary programming languages used in development.
 The code for the project lives on <a href="https://github.com/openzim/zimfarm" target="_blank">openzim/zimfarm</a>.
 
 Starting from the backend, I began with the introduction of <a href="https://hatch.pypa.io/" target="_blank">Hatch</a>
-as a dependency manager to pin all dependencies to a specific version. Some of the libraries were upgraded to major versions while some were replaced entirely with more feature-rich ones. The most notable replacements in this ambitious reengineering were:
+as a dependency manager to pin all dependencies to a specific version. I proceeded to upgrade some of the existing libraries to major versions
+while others were replaced entirely with more feature-rich ones. The most notable replacements in this ambitious reengineering were:
 
 - Flask &rarr; FastAPI
 - Marshmallow &rarr; Pydantic
@@ -54,7 +55,7 @@ to clean up parts of the old API that were fragile and inelegant such as:
 - relying on `subprocess.run` calls to perform actions such as verification of authentication messages
 - query parameters that contained special characters crashing server (<a href="https://github.com/openzim/zimfarm/issues/1131" target="_blank">#1131</a>)
 - crashes in user creation when fields that should be required (like an email address) were missing <a href="https://github.com/openzim/zimfarm/issues/1058" target="_blank">#1058</a>
-- UI inconsistencies that caused buttons to remain active even when no changes were pending (<a href="https://github.com/openzim/zimfarm/issues/994" target="_blank">#994</a>)
+- UI inconsistencies that caused buttons to remain active even when no changes were pending in the recipe editor (<a href="https://github.com/openzim/zimfarm/issues/994" target="_blank">#994</a>)
 - ZIM metadata values not being escaped properly (<a href="https://github.com/openzim/zimfarm/issues/1203" target="_blank">#1203</a>)
 
 Aside from the library switches and upgrades, the reengineering introduced significant features including but not limited to:
@@ -65,7 +66,7 @@ Aside from the library switches and upgrades, the reengineering introduced signi
 - addded support for SSH keys generated using the Ed25519 signature scheme (<a href="https://github.com/openzim/zimfarm/pull/1279" target="_blank">#1279</a>)
 - standardized schedule language codes to the ISO 639-3 format (<a href="https://github.com/openzim/zimfarm/pull/1241" target="_blank">#1241</a>)
 - switched from bare bones `requirements.txt` to hatch for dependency management (<a href="https://github.com/openzim/zimfarm/pull/1106" target="_blank">#1106</a>)
-- used modern type annotations and tooling like <a href="https://github.com/microsoft/pyright" target="_blank">Pyright</a>, and
+- used modern type annotations and tooling like <a href="https://github.com/microsoft/pyright" target="_blank">Pyright</a> and
   <a href="https://docs.astral.sh/ruff/" target="_blank">Ruff</a>
   to enforce type-checking and code quality
 - introduced functions to introspect Pydantic schemas and Python type definitions, thus, enabling the extraction of type information for validation and client-side reuse (<a href="https://github.com/openzim/zimfarm/pull/1150" target="_blank">#1150</a>, <a href="https://github.com/openzim/zimfarm/pull/1246" target="_blank">#1246</a>)
@@ -82,24 +83,24 @@ necessary. Relying heavily on <a href="https://vuetifyjs.com/" target="_blank">V
 
 Reengineering a project of this size was by no means a small feat and it was challenging as much as it was exciting.
 The biggest challenges I faced (in no particular order) during
-the project revolved around converting Marshmallow models to Pydantic models,
-extracting metadata from Pydantic models to be able to share validation rules to clients, relaxing validation
-while reading existing data from the database, but enforcing at writes. A lot of this meant
-I had to <a href="https://docs.pydantic.dev/latest/concepts/validators/" target="_blank">wrap around validators</a> to make them skip validation based on contexts.
+the project revolved around
 
-To be able to extract metadata from the Pydantic models, there was quite a lot of instrospection
-using the <a href="https://docs.python.org/3/library/typing.html#" target="_blank">typing module</a> (more on that in a later blog post).
+- converting Marshmallow models to Pydantic models
+- extracting metadata from Pydantic models to be able to share validation rules to clients. To be able to do this cleanly, there was intropsection
+  using the <a href="https://docs.python.org/3/library/typing.html#" target="_blank">typing module</a> (more on that in a later blog post).
+- relaxing validation while reading existing data from the database, but enforcing at writes. A lot of this meant
+  I had to <a href="https://docs.pydantic.dev/latest/concepts/validators/" target="_blank">wrap around validators</a> to make them skip validation based on context.
+- using <a href="https://docs.pydantic.dev/latest/concepts/fields/#discriminator" target="_blank">Pydantic's discriminators</a> to be able to
+  discriminate between the different schemas of the various scrapers/offliners.
+- employing <a href="https://www.postgresql.org/docs/9.5/functions-json.html" target="_blank">PostgreSQL JSON functions</a> to query JSONB columns
+  whose underlying types were changed
 
-Similarly, the project featured <a href="https://docs.pydantic.dev/latest/concepts/fields/#discriminator" target="_blank">Pydantic's discriminators</a> to be able to discriminate between the
-different schemas of the various scrapers/offliners.
+_Again, this list is not exhaustive and does not fully capture the variety of hurdles I faced during the project, but it highlights some of the
+more interesting ones._
 
-The frontend served as a learning guide for me to use Vue 3 and TypeScript. Prior to this, I had
-only used them sparingly (I cannot remember the last time I did something frontend-related). But
-after the first couple of weeks, I began to find my feet, thanks to foundational knowledge in
-JavaScript.
-
-There were some minor changes in the database schema which meant I had to employ <a href="https://www.postgresql.org/docs/9.5/functions-json.html" target="_blank">PostgreSQL JSON functions</a>
-to be able to get the functionality I needed.
+The frontend became a hands-on learning journey that helped me improve my proficiency with Vue 3 and TypeScript.
+Prior to this, I had only used them sparingly (I cannot remember the last time I did something frontend-related). But
+after the first couple of weeks, I began to find my feet, thanks to foundational knowledge in JavaScript.
 
 ### Future Work
 
@@ -130,7 +131,8 @@ I express gratitude to Google for providing me with this opportunity to contribu
 
 Thanks to the team at Kiwix for reviewing my pull requests during the submission phase with the same responsiveneess, accepting my proposal and
 making this a reality.
-If you are a newbie or a seasoned developer looking to get started with open-source and collaborative development, I implore you to start with the
+
+Whether you are a newbie or a seasoned developer looking to get started with open-source and collaborative development, I implore you to start with the
 Kiwix codebase. The team is incredibly responsive, offers constructive feedback, and makes the contribution process both welcoming and rewarding.
 You’ll not only sharpen your technical skills but also get the chance to work on projects that make a real impact.
 
