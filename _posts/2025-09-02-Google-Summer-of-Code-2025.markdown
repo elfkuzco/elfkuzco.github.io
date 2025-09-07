@@ -53,7 +53,7 @@ to clean up parts of the old API that were fragile and inelegant such as:
 
 - relying on `subprocess.run` calls to perform actions such as verification of authentication messages
 - query parameters that contained special characters crashing server (<a href="https://github.com/openzim/zimfarm/issues/1131" target="_blank">#1131</a>)
-- crashes in user creation when required fields (like an email address) were missing, due
+- crashes in user creation when fields that should be required (like an email address) were missing <a href="https://github.com/openzim/zimfarm/issues/1058" target="_blank">#1058</a>
 - UI inconsistencies that caused buttons to remain active even when no changes were pending (<a href="https://github.com/openzim/zimfarm/issues/994" target="_blank">#994</a>)
 - ZIM metadata values not being escaped properly (<a href="https://github.com/openzim/zimfarm/issues/1203" target="_blank">#1203</a>)
 
