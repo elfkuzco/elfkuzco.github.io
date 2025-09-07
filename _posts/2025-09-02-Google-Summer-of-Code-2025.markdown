@@ -75,7 +75,7 @@ Aside from the library switches and upgrades, the reengineering introduced signi
 _To avoid turning the list into a long and boring changelog, I've highlighted only a few select improvements (not ranked in any way). If you are
 curious, you can browse the full list of pull requests on <a href="https://github.com/openzim/zimfarm/pulls?page=4&q=is%3Apr+author%3Aelfkuzco+is%3Aclosed+merged%3A%3E%3D2025-05-22" target="_blank">Github</a>)_
 
-I tried to keep the UI largely the same as the orignal (partly because I am not good at design 😅) and only made ambitious changes in the UI were
+I tried to keep the UI largely the same as the orignal (partly because I am not good at design 😅) and only made ambitious changes in the UI where
 necessary. Relying heavily on <a href="https://vuetifyjs.com/" target="_blank">Vuetify</a>, I gave the UI a more modern design and introduced some additional features and pages.
 
 ### Challenges
