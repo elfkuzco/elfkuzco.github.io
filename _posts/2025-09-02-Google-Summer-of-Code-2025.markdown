@@ -103,7 +103,7 @@ to be able to get the functionality I needed.
 
 ### Future Work
 
-We plan to wrap up this GSoC project with the deployment of the `zimfram-upgrade` branch on September 8th, 2025. Of course, the journey doesn't end
+We plan to wrap up this GSoC project with the deployment of the `zimfarm-upgrade` branch on September 8th, 2025. Of course, the journey doesn't end
 here. There's still plenty of work ahead with issues of different priorities ranging from
 <a href="https://github.com/openzim/zimfarm/issues?q=is%3Aissue%20state%3Aopen%20label%3Aprio1" target="_blank">prio1</a>,
 <a href="https://github.com/openzim/zimfarm/issues?q=is%3Aissue%20state%3Aopen%20label%3Aprio2" target="_blank">prio2</a>, and
