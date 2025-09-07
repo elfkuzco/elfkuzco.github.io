@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Google Summer of Code 2025 - Reengineering ZIMFarm from the Ground Up"
-date: 2025-09-01 00:00:00 +0100
+date: 2025-09-01 06:00:00 +0100
 author: "Uchechukwu Orji"
 permalink: /gsoc-2025/
 header_buttons: '<a href="https://github.com/openzim/zimfarm" class="button" target="_blank">View Project on GitHub</a>'
